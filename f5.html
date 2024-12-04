@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+    <style>
+        a {
+            display: block;
+            width: 80%;
+            height: 300px;
+            margin: 390px auto;
+            background-color: skyblue;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 5.定义⼀个函数 weekOfYear 返回参数年份中有多少个星期。 -->
+    <!-- 1 weekOfYear("2024/12/1"); // 53 -->
+    <a href="./index.html">点击此区域回主页面</a>
+    <script> 
+        function weekOfYearSimplified(dateStr) {
+            console.log("这是替代的格式"+dateStr.replace(/-/g, '/'));
+            var date = new Date(dateStr.replace(/-/g, '/'));
+            console.log("输出输入的时间"+date);
+            var year = date.getFullYear();
+            console.log("输出输入的时间的年份"+year);
+            console.log("输出输入的时间的毫秒数"+date.getTime());
+            var firstDayOfYear = new Date(year, 0, 1);
+            var lastDayOfYear = new Date(year, 11, 31);
+            console.log(firstDayOfYear,lastDayOfYear)
+            
+            var weekCount = 1;
+            var currentDate = new Date(firstDayOfYear);
+            console.log(currentDate)
+            while (currentDate <= lastDayOfYear) {
+                if (currentDate.getDay() === 6) {
+                    weekCount++;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            console.log(weekCount)
+            return weekCount;
+        }
+        var result1 = weekOfYearSimplified("2020-12-1");
+        console.log("这是一天一天增加得到的周数"+result1); 
+        
+    </script>
+
+    <script>
+        function countFullWeeksInYear(year) {
+            var firstDayOfYear = new Date(year, 0, 1);
+            var lastDayOfYear = new Date(year, 11, 31);
+            var weekCount = 0;
+            var currentDate = new Date(firstDayOfYear);
+            
+            while (currentDate.getDay() !== 1) {
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            
+            while (currentDate <= lastDayOfYear) {
+                weekCount++;
+                currentDate.setDate(currentDate.getDate() + 7);
+                if (currentDate > lastDayOfYear) {
+                    break;
+                }
+            }
+            return weekCount;
+        }
+        var result2 = countFullWeeksInYear(2020);
+        console.log("这是七天一星期增加得到的周数"+result2);   
+    </script>
+</body>
+</html>

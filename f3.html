@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <style>
+        a {
+            display: block;
+            width: 80%;
+            height: 300px;
+            margin: 390px auto;
+            background-color: skyblue;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 3.定义⼀个 isBetween 函数 返回⼀个 boolean 
+    来展示⼀个时间是否介于两个时间之间。 -->
+    <!-- 1 isBetween("2010-10-20", "2010-10-19", "2010-10-25"); // true
+    2 // 判断2010-10-20是不是在2010-10-19和2010-10-25之间 -->
+    <a href="./index.html">点击此区域回主页面</a>
+    <script>                                  
+        function isBetween(startDateStr, dateToCheckStr, endDateStr) {
+            var startDate = new Date(startDateStr);
+            var dateToCheck = new Date(dateToCheckStr);
+            var endDate = new Date(endDateStr);
+            console.log(startDate,dateToCheck,endDate)
+            return dateToCheck >= startDate && dateToCheck <= endDate;
+        }
+        var result = isBetween('2010-10-19', '2010-10-20', '2010-10-25');
+        //var result = isBetween('2024-10-19', '2024-12-20', '2024-10-25');
+        console.log(result);
+    </script>
+</body>
+</html>

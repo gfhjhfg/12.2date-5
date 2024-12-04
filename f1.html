@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1</title>
+    <style>
+        a {
+            display: block;
+            width: 80%;
+            height: 300px;
+            margin: 390px auto;
+            background-color: skyblue;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.【时间增加】返回增加⼀定时间的时间,各个传⼊的单位对⼤⼩
+    写不敏感，⽀持缩写和复数。 请注意，缩写是区分⼤⼩写的。 -->
+    <!-- ⽀持的单位列表：
+    单位 描述 
+    day ⽇ 
+    week 周 
+    hour ⼩时 
+    minute 分钟 
+    second 秒 
+    millisecond 毫秒  -->
+    <!-- 1 add(7, "day"); //不传第三个参数默认为当前时刻
+    2 add(7, "day", "2024/10/8 12:00:23");
+    3 add(18, "week", "2024/10/8 12:00:23"); -->
+
+    <a href="./index.html">点击此区域回主页面</a>
+
+    <!-- <script>
+        function add(amount, unit, startDateStr = new Date().toISOString().slice(0, 10) + 'T' + new Date().toTimeString().slice(0, 8)) {
+            // 将起始日期字符串转换为 Date 对象
+            const startDate = new Date(startDateStr.replace(/-/g, '/').replace(/ /g, 'T') + ':00Z');
+
+            // 定义时间单位与毫秒数的映射（大小写不敏感，支持缩写和复数）
+            const timeUnitMap = {
+                'ms': 1,
+                'millisecond': 1,
+                'milliseconds': 1,
+                's': 1000,
+                'second': 1000,
+                'seconds': 1000,
+                'min': 60000,
+                'minute': 60000,
+                'minutes': 60000,
+                'h': 3600000,
+                'hour': 3600000,
+                'hours': 3600000,
+                'd': 86400000,
+                'day': 86400000,
+                'days': 86400000,
+                'w': 604800000,
+                'week': 604800000,
+                'weeks': 604800000,
+                'm': 2592000000, // 一个月粗略按30天计算
+                'month': 2592000000,
+                'months': 2592000000,
+                'y': 31536000000, // 一年粗略按365天计算
+                'year': 31536000000,
+                'years': 31536000000
+            };
+
+                // 将单位转换为小写并去除复数形式
+                const lowerUnit = unit.toLowerCase().replace(/s$/, '');
+
+                // 检查单位是否有效
+                if (!timeUnitMap[lowerUnit]) {
+                    throw new Error(`Invalid time unit: ${unit}`);
+                }
+
+                // 计算新的时间
+                const newDate = new Date(startDate.getTime() + amount * timeUnitMap[lowerUnit]);
+
+                // 返回结果格式为 YYYY/MM/DD HH:mm:ss
+                const year = newDate.getFullYear();
+                const month = String(newDate.getMonth() + 1).padStart(2, '0');
+                const day = String(newDate.getDate()).padStart(2, '0');
+                const hours = String(newDate.getHours()).padStart(2, '0');
+                const minutes = String(newDate.getMinutes()).padStart(2, '0');
+                const seconds = String(newDate.getSeconds()).padStart(2, '0');
+
+                return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+            }
+
+            // 测试用例
+            console.log(add(7, "day")); // 默认当前时刻
+            console.log(add(7, "day", "2024/10/8 12:00:23"));
+            console.log(add(18, "week", "2024/10/8 12:00:23"));
+    </script> -->
+    <script>
+        function addTimeToDate(number, unit, dateString = new Date().toLocaleDateString()) {
+            // console.log("sj"+date.toISOString())
+            let now = new Date();
+            // console.log(dateString = now.toISOString().split('T')[0]);
+            console.log("函数里面"+dateString);
+            let date = new Date(`${dateString}T00:00:00`);
+            
+            console.log(date)
+            console.log(unit.toLowerCase())
+            switch (unit.toLowerCase()) {
+                case 'week':
+                case 'weeks':
+                    var a=date.setDate(date.getDate() + number * 7);
+                    console.log(a)
+                    break;
+                case 'day':
+                case 'days':
+                    var b=date.setDate(date.getDate() + number);
+                    console.log(b)
+                    break;
+                case 'month':
+                case 'months':
+                    var c=date.setMonth(date.getMonth() + number);
+                    console.log(c)
+                    break;
+                default:
+                    throw new Error('Unsupported time unit');
+            }
+            console.log("lower "+unit.toLowerCase()+"++++++++")
+            return date.toLocaleDateString();
+        }
+
+        // console.log(addTimeToDate(1, 'week', '2023-10-01')); // 输出：2023-10-08
+        // console.log(addTimeToDate(3, 'days', '2023-10-01')); // 输出：2023-10-04
+        console.log(addTimeToDate(1, 'month', '2023-10-01')); // 输出：2023-11-01
+        console.log(addTimeToDate(1, 'week')); 
+    
+        // let now = new Date();
+        // console.log(now+"...")
+        // console.log(now.toLocaleDateString()+"aa")
+        // let dateString = now.toISOString().split('T')[0];
+        // console.log(dateString); 
+
+    </script>
+</body>
+</html>

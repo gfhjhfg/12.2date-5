@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    <style>
+        a {
+            display: block;
+            width: 80%;
+            height: 300px;
+            margin: 390px auto;
+            background-color: skyblue;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 4.定义⼀个 isTomorrow 函数来判断参数是否是明天。 -->
+    <!-- 1 isTomorrow("2024/12/27"); // false
+    2 isTomorrow("2024/12/3"); // true -->
+    <a href="./index.html">点击此区域回主页面</a>
+    <script>
+        function isTomorrow(dateStr) {
+            var inputDate = new Date(dateStr.replace(/-/g, '/')); 
+            var now = new Date();
+            var tomorrow = new Date(now);
+            console.log(now,tomorrow)
+            tomorrow.setDate(now.getDate() + 1);
+            console.log(now.getDate() + 1);
+            
+            var a=inputDate.setHours(0, 0, 0, 0);
+            var b=tomorrow.setHours(0, 0, 0, 0);
+            console.log(a,b)
+            return inputDate.toDateString() === tomorrow.toDateString();
+        }
+        var test1 = isTomorrow("2024/12/27"); 
+        var test2 = isTomorrow("2024/12/04"); 
+        console.log(test1); 
+        console.log(test2);
+    </script>
+</body>
+</html>

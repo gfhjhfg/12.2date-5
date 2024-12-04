@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+    <style>
+        a {
+            display: block;
+            width: 80%;
+            height: 300px;
+            margin: 390px auto;
+            background-color: skyblue;
+            color: black;
+            text-decoration: none;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 2.定义⼀个 dayOfYear 函数，接受⼀个字符串时间，
+    返回⼀个 number 来表示是该⽇期年中第⼏天。 -->
+    <!-- 1 dayOfYear("2010-01-01"); 
+     // 1 表示该⽇期是2010年的第⼀天 -->
+    <a href="./index.html">点击此区域回主页面</a>
+    <script>
+        function dayOfYear(dateString) {
+            var date = new Date(dateString.replace(/-/g, '/'));
+            console.log(dateString.replace(/-/g, '/'));
+            console.log(date+",");
+            var year = date.getFullYear();
+            console.log(year);
+            var startOfYear = new Date(year, 0, 0); 
+            console.log(year, 0, 0);
+            console.log(startOfYear);
+            var millisecondsPerDay = 24 * 60 * 60 * 1000; 
+            console.log(millisecondsPerDay);
+            var dayDifference = Math.floor((date - startOfYear) / millisecondsPerDay);
+            return dayDifference ;
+        }
+
+        // console.log(dayOfYear("2024-12-3"));
+        console.log(dayOfYear("2024-2-20"));
+    </script>
+</body>
+</html>
